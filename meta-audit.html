@@ -1,0 +1,2475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldil AI Meta Ads Audit - Strategic Scaling Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #162642 0%, #1a2b47 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 40px 60px;
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+            background: linear-gradient(135deg, #162642 0%, #1a2b47 100%);
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #cc5b27;
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .slide-number {
+            color: #cc5b27;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        h1 {
+            color: #cc5b27;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #cc5b27;
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-left: 4px solid #cc5b27;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #cc5b27;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #ffffff;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background: rgba(204, 91, 39, 0.2);
+            padding: 20px;
+            border-left: 4px solid #cc5b27;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(204, 91, 39, 0.3);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            color: #cc5b27;
+            font-weight: bold;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #ffffff;
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(204, 91, 39, 0.3);
+        }
+
+        th {
+            background: rgba(204, 91, 39, 0.8);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: rgba(204, 91, 39, 0.1);
+        }
+
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #FF9800;
+            font-weight: bold;
+        }
+
+        .critical {
+            color: #F44336;
+            font-weight: bold;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: #cc5b27;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #b84e22;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            background: rgba(204, 91, 39, 0.3);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #cc5b27;
+            margin: 15px 0;
+        }
+
+        .roi-highlight {
+            background: linear-gradient(135deg, #cc5b27, #b84e22);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        .roi-highlight h3 {
+            color: #ffffff !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        .roi-highlight h2 {
+            color: #ffffff !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        .strategic-headline {
+            color: #ffffff !important;
+            background: rgba(204, 91, 39, 0.9);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .success-headline {
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #cc5b27, #b84e22);
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            font-weight: bold;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .slide-title {
+            background: rgba(204, 91, 39, 0.1);
+            padding: 30px;
+            margin: -40px -60px 30px -60px;
+            border-bottom: 3px solid #cc5b27;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px 30px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">1 / 18</div>
+            </div>
+            <div style="text-align: center; padding-top: 5vh;">
+                <h1 style="font-size: 3.5em; margin-bottom: 30px;">ELDIL AI META ADS AUDIT</h1>
+                <h2 style="border: none; padding: 0; color: white; font-size: 2em;">Strategic Performance Analysis & Scaling Roadmap</h2>
+                <div style="margin-top: 60px; font-size: 1.2em;">
+                    <p><strong>Prepared for:</strong> Eldil AI Leadership Team</p>
+                    <p><strong>Prepared by:</strong> Meta Ads Optimization Team</p>
+                    <p><strong>Date:</strong> September 2025</p>
+                    <p><strong>Engagement:</strong> Complete Meta Ads Account Audit & Strategic Scaling Plan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">2 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>EXECUTIVE SUMMARY</h1>
+            </div>
+            
+            <div class="highlight">
+                <h3>Current Performance Analysis</h3>
+                <p>Eldil AI's Meta Ads account shows <strong>significant untapped potential</strong> with clear optimization opportunities. Recent conversion event changes have impacted performance, but historical data demonstrates strong efficiency potential.</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">$24,452</div>
+                    <div class="metric-label">Total Spend Analyzed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">74</div>
+                    <div class="metric-label">Total Leads Generated</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$254.74</div>
+                    <div class="metric-label">Active Campaign CPA</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$59.12</div>
+                    <div class="metric-label">Best Campaign CPA</div>
+                </div>
+            </div>
+
+            <h3>Key Findings</h3>
+            <ul>
+                <li><strong>Performance Inconsistency:</strong> CPA ranges from $59 to $6,555 indicating targeting and funnel issues</li>
+                <li><strong>Audience Segmentation Gap:</strong> Mixed agency and CMO targeting diluting effectiveness</li>
+                <li><strong>Conversion Tracking Issues:</strong> Recent event change from booking to onboarding hurt performance</li>
+                <li><strong>Video Creative Success:</strong> Historical $7 cost per booking with video ads shows potential</li>
+            </ul>
+
+            <div class="roi-highlight">
+                <h3 class="strategic-headline">Strategic Recommendation</h3>
+                <p><strong>IMMEDIATE RESTRUCTURE REQUIRED</strong><br>
+                Account needs complete campaign architecture overhaul with separated audience targeting and optimized conversion events to achieve sustainable sub-$100 CPA performance.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Current State Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">3 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>CURRENT PERFORMANCE DEEP DIVE</h1>
+            </div>
+
+            <h2>Campaign Performance Analysis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Campaign</th>
+                        <th>Status</th>
+                        <th>Leads</th>
+                        <th>Spend</th>
+                        <th>CPA</th>
+                        <th>CTR</th>
+                        <th>Assessment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Eldil Main</td>
+                        <td class="success">Active</td>
+                        <td>20</td>
+                        <td>$3,162</td>
+                        <td>$158.09</td>
+                        <td>19.37%</td>
+                        <td class="success">✅ Top Performer</td>
+                    </tr>
+                    <tr>
+                        <td>Larger Agencies</td>
+                        <td class="success">Active</td>
+                        <td>37</td>
+                        <td>$11,358</td>
+                        <td>$306.98</td>
+                        <td>8.58%</td>
+                        <td class="warning">⚠️ Needs Optimization</td>
+                    </tr>
+                    <tr>
+                        <td>Facebook Take The Wheel</td>
+                        <td class="warning">Inactive</td>
+                        <td>14</td>
+                        <td>$828</td>
+                        <td>$59.12</td>
+                        <td>7.53%</td>
+                        <td class="success">✅ Excellent - Reactivate</td>
+                    </tr>
+                    <tr>
+                        <td>CMOs</td>
+                        <td class="warning">Inactive</td>
+                        <td>2</td>
+                        <td>$528</td>
+                        <td>$263.86</td>
+                        <td>1.88%</td>
+                        <td class="warning">⚠️ Poor Performance</td>
+                    </tr>
+                    <tr>
+                        <td>Eldil Main (Modified)</td>
+                        <td class="critical">Archived</td>
+                        <td>1</td>
+                        <td>$6,555</td>
+                        <td>$6,555.43</td>
+                        <td>2.11%</td>
+                        <td class="critical">❌ Complete Failure</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight">
+                <h3>Performance Insights</h3>
+                <p><strong>Active campaigns averaging $254.74 CPA</strong> - significantly better than overall account average of $330.43. "Facebook Take The Wheel" campaign demonstrates potential for sub-$60 CPA performance when properly optimized.</p>
+            </div>
+
+            <h3>Critical Issues Identified</h3>
+            <ul>
+                <li><strong>Budget Waste:</strong> $6,555 spent on failed campaign with 1 lead</li>
+                <li><strong>Inconsistent Targeting:</strong> 10x CPA variation between best and worst performers</li>
+                <li><strong>Premature Campaign Pausing:</strong> Best performing campaign ($59 CPA) was deactivated</li>
+                <li><strong>Mixed Audience Strategy:</strong> No clear separation between agency and CMO targeting</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: Audience Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">4 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>AUDIENCE SEGMENTATION ANALYSIS</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Target Audience Segments</h2>
+                    <p>Based on discovery call analysis, Eldil targets two distinct markets:</p>
+
+                    <div class="phase-card">
+                        <h3>🏢 Agencies (Primary Target)</h3>
+                        <ul>
+                            <li><strong>Company Size:</strong> 50-200 employees</li>
+                            <li><strong>Monthly Value:</strong> $1,000-$5,000</li>
+                            <li><strong>Decision Makers:</strong> Marketing Directors, CEOs</li>
+                            <li><strong>Pain Points:</strong> Client GEO visibility, competitive analysis</li>
+                            <li><strong>Sales Cycle:</strong> Longer, requires demos</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h3>👔 In-House CMOs (Secondary)</h3>
+                        <ul>
+                            <li><strong>Company Type:</strong> Enterprise brands</li>
+                            <li><strong>Monthly Value:</strong> ~$300</li>
+                            <li><strong>Decision Makers:</strong> CMOs, VP Marketing</li>
+                            <li><strong>Pain Points:</strong> Brand visibility tracking</li>
+                            <li><strong>Sales Cycle:</strong> Shorter, self-serve trials</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Current Targeting Issues</h2>
+                    
+                    <div class="highlight">
+                        <h4>❌ Major Problems Identified:</h4>
+                        <ul>
+                            <li><strong>Mixed Messaging:</strong> Single landing page trying to serve both audiences</li>
+                            <li><strong>Diluted Targeting:</strong> Broad audiences capturing wrong prospects</li>
+                            <li><strong>Creative Mismatch:</strong> Generic messaging not resonating with specific pain points</li>
+                            <li><strong>Budget Allocation:</strong> No strategic spend distribution between segments</li>
+                        </ul>
+                    </div>
+
+                    <h3>Audience Performance Analysis</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">37</div>
+                            <div class="metric-label">Agency Campaign Leads</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$306.98</div>
+                            <div class="metric-label">Agency Campaign CPA</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">CMO Campaign Leads</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$263.86</div>
+                            <div class="metric-label">CMO Campaign CPA</div>
+                        </div>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">Solution Required</h3>
+                        <p>Complete audience separation with dedicated campaigns, creative, and landing pages for each segment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Funnel Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">5 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>CONVERSION FUNNEL ASSESSMENT</h1>
+            </div>
+
+            <h2>Landing Page Analysis</h2>
+            <div class="two-column">
+                <div>
+                    <div class="highlight">
+                        <h3>Current Landing Page Issues</h3>
+                        <ul>
+                            <li><strong>Mixed Messaging:</strong> Single page trying to convert both agencies and CMOs</li>
+                            <li><strong>Generic Value Props:</strong> Not addressing specific pain points</li>
+                            <li><strong>Weak Call-to-Action:</strong> "Get Started for Free" lacks urgency</li>
+                            <li><strong>No Social Proof:</strong> Missing client testimonials and case studies</li>
+                        </ul>
+                    </div>
+
+                    <h3>Conversion Event Analysis</h3>
+                    <p>Major issue identified: Recent switch from booking-based events to onboarding events caused performance decline.</p>
+                    
+                    <div class="phase-card">
+                        <h4>Historical Performance (Booking Events):</h4>
+                        <ul>
+                            <li>$30 cost per booking (standard ads)</li>
+                            <li>$7 cost per booking (video ads)</li>
+                            <li>High conversion rates</li>
+                            <li>Campaigns exited learning phase quickly</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Current Performance (Onboarding Events):</h4>
+                        <ul>
+                            <li>$254.74 active campaign CPA</li>
+                            <li>Lower event volume</li>
+                            <li>Campaigns stuck in learning phase</li>
+                            <li>Poor event match quality scores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Funnel Optimization Strategy</h2>
+                    
+                    <h3>🎯 Recommended Funnel Structure</h3>
+                    
+                    <div class="phase-card">
+                        <h4>Agency Funnel:</h4>
+                        <ol>
+                            <li><strong>Landing Page:</strong> "Enterprise-Grade GEO Analytics for Agencies"</li>
+                            <li><strong>Lead Magnet:</strong> "Agency GEO Competitive Analysis Report"</li>
+                            <li><strong>Demo Booking:</strong> Calendly integration for qualified prospects</li>
+                            <li><strong>Follow-up:</strong> Automated email sequence with case studies</li>
+                        </ol>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>CMO Funnel:</h4>
+                        <ol>
+                            <li><strong>Landing Page:</strong> "Track Your Brand's AI Visibility"</li>
+                            <li><strong>Free Trial:</strong> 14-day full access trial</li>
+                            <li><strong>Self-Service:</strong> Guided onboarding flow</li>
+                            <li><strong>Upgrade Path:</strong> Usage-based upgrade prompts</li>
+                        </ol>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">Landing Pages Needed</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Conversion Events</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roi-highlight">
+                <h3 class="strategic-headline">Critical Action Required</h3>
+                <p>Revert to booking-based conversion events for agencies while implementing separate onboarding events for CMO self-serve trials</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Creative Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">6 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>CREATIVE PERFORMANCE ANALYSIS</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Video Creative Performance</h2>
+                    
+                    <div class="highlight">
+                        <h3>✅ Historical Video Success</h3>
+                        <ul>
+                            <li><strong>Cost per booking:</strong> $7 (83% better than static)</li>
+                            <li><strong>Format:</strong> Screen recording with voiceover</li>
+                            <li><strong>Hook:</strong> "Your client just asked why don't we show up in ChatGPT answers?"</li>
+                            <li><strong>Problem/Solution:</strong> Clear GEO visibility gap demonstration</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Current High-Performing Campaigns:</h4>
+                        <ul>
+                            <li><strong>"Eldil Main":</strong> 19.37% CTR - highest engagement</li>
+                            <li><strong>"Facebook Take The Wheel":</strong> 7.53% CTR with $59 CPA</li>
+                            <li><strong>Video completion rates:</strong> Strong 25%+ completion</li>
+                        </ul>
+                    </div>
+
+                    <h3>Creative Fatigue Analysis</h3>
+                    <p>Discovery call revealed creative fatigue issues requiring continuous creative refresh strategy.</p>
+                </div>
+
+                <div>
+                    <h2>Creative Optimization Strategy</h2>
+                    
+                    <h3>🎨 Video Creative Framework</h3>
+                    
+                    <div class="phase-card">
+                        <h4>Agency Video Ads:</h4>
+                        <ul>
+                            <li><strong>Hook:</strong> "Your biggest client just asked..."</li>
+                            <li><strong>Problem:</strong> GEO visibility gap demonstration</li>
+                            <li><strong>Solution:</strong> Eldil dashboard walkthrough</li>
+                            <li><strong>Social Proof:</strong> "Trusted by 500+ agencies"</li>
+                            <li><strong>CTA:</strong> "Book Your Free GEO Audit"</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>CMO Video Ads:</h4>
+                        <ul>
+                            <li><strong>Hook:</strong> "Your brand is invisible in AI search..."</li>
+                            <li><strong>Problem:</strong> Brand visibility tracking blind spot</li>
+                            <li><strong>Solution:</strong> Real-time monitoring demo</li>
+                            <li><strong>Social Proof:</strong> Enterprise client logos</li>
+                            <li><strong>CTA:</strong> "Start Free 14-Day Trial"</li>
+                        </ul>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">6</div>
+                            <div class="metric-label">Video Variations Needed</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">12</div>
+                            <div class="metric-label">Static Creative Versions</div>
+                        </div>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">Video Creative Priority</h3>
+                        <p>Focus 80% of creative budget on video content with systematic A/B testing framework</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Opportunity Gap Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">7 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>OPPORTUNITY GAP ANALYSIS</h1>
+            </div>
+
+            <h2>Performance Optimization Opportunities</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value critical">$6,555</div>
+                    <div class="metric-label">Wasted on Failed Campaign</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value warning">2,280%</div>
+                    <div class="metric-label">CPA Improvement Potential</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value success">$59</div>
+                    <div class="metric-label">Proven Best CPA Achievable</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$195</div>
+                    <div class="metric-label">Average Waste Per Lead</div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h3>🔍 Immediate Opportunities</h3>
+                    
+                    <div class="phase-card">
+                        <h4>1. Reactivate High-Performers</h4>
+                        <ul>
+                            <li><strong>Action:</strong> Relaunch "Facebook Take The Wheel" campaign</li>
+                            <li><strong>Expected Impact:</strong> Return to $59 CPA performance</li>
+                            <li><strong>Confidence:</strong> High - historical data proven</li>
+                            <li><strong>Timeline:</strong> Immediate (1-2 days)</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>2. Fix Conversion Events</h4>
+                        <ul>
+                            <li><strong>Action:</strong> Revert to booking-based events for agencies</li>
+                            <li><strong>Expected Impact:</strong> 80% CPA reduction</li>
+                            <li><strong>Confidence:</strong> Very High - proven $7-30 CPB</li>
+                            <li><strong>Timeline:</strong> 1 week implementation</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>3. Separate Audience Campaigns</h4>
+                        <ul>
+                            <li><strong>Action:</strong> Create dedicated agency/CMO campaigns</li>
+                            <li><strong>Expected Impact:</strong> 50% efficiency improvement</li>
+                            <li><strong>Confidence:</strong> High - targeting best practices</li>
+                            <li><strong>Timeline:</strong> 2 weeks setup</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>📈 Scaling Opportunities</h3>
+                    
+                    <div class="highlight">
+                        <h4>Business Growth Context:</h4>
+                        <ul>
+                            <li><strong>Current MRR:</strong> $15K (70% monthly growth)</li>
+                            <li><strong>Customer LTV:</strong> $1K-5K agencies, $300 CMOs</li>
+                            <li><strong>Profit Margins:</strong> ~50%</li>
+                            <li><strong>Payback Period:</strong> Target 1-2 months</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Revenue Impact Projections</h4>
+                        <table style="font-size: 0.9em;">
+                            <thead>
+                                <tr>
+                                    <th>Optimization</th>
+                                    <th>CPA Reduction</th>
+                                    <th>Monthly Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fix Conversion Events</td>
+                                    <td>-80%</td>
+                                    <td>+400% lead volume</td>
+                                </tr>
+                                <tr>
+                                    <td>Separate Audiences</td>
+                                    <td>-50%</td>
+                                    <td>+200% efficiency</td>
+                                </tr>
+                                <tr>
+                                    <td>Video Creative Focus</td>
+                                    <td>-75%</td>
+                                    <td>+300% engagement</td>
+                                </tr>
+                                <tr class="success">
+                                    <td><strong>Combined Impact</strong></td>
+                                    <td><strong>-90%</strong></td>
+                                    <td><strong>+1000% ROI</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="strategic-headline">Conservative Projection</h3>
+                        <p>Achieving $60 CPA would enable <strong>10x scaling</strong> within current budget constraints while maintaining 400% ROI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Strategic Scaling Framework -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">8 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>STRATEGIC SCALING FRAMEWORK</h1>
+            </div>
+
+            <h2>Three-Phase Optimization Approach</h2>
+
+            <div class="phase-card">
+                <h3>Phase 1: Foundation Fix (Week 1-2)</h3>
+                <p><strong>Focus:</strong> Address critical performance blockers</p>
+                <h4>Core Actions:</h4>
+                <ul>
+                    <li><strong>Revert Conversion Events:</strong> Back to booking-based for agencies</li>
+                    <li><strong>Reactivate Winners:</strong> "Facebook Take The Wheel" campaign</li>
+                    <li><strong>Pause Budget Waste:</strong> Archive/fix failing campaigns</li>
+                    <li><strong>Event Match Quality:</strong> Improve tracking implementation</li>
+                </ul>
+                <div class="highlight">
+                    <strong>Expected Results:</strong><br>
+                    Week 1-2: Return to $60-80 CPA range on reactivated campaigns<br>
+                    <strong>Investment:</strong> Maintain current $300/day spend<br>
+                    <strong>Confidence:</strong> 90% - based on historical proven performance
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h3>Phase 2: Audience Separation (Week 3-4)</h3>
+                <p><strong>Focus:</strong> Dedicated campaigns for each market segment</p>
+                <h4>Campaign Architecture:</h4>
+                <ul>
+                    <li><strong>Agency Campaigns:</strong> 3 ad sets targeting different company sizes</li>
+                    <li><strong>CMO Campaigns:</strong> 2 ad sets for different industries</li>
+                    <li><strong>Dedicated Landing Pages:</strong> Separate pages for each audience</li>
+                    <li><strong>Creative Customization:</strong> Audience-specific messaging</li>
+                </ul>
+                <div class="highlight">
+                    <strong>Expected Results:</strong><br>
+                    Week 3-4: 50% efficiency improvement, cleaner attribution<br>
+                    <strong>Investment:</strong> Scale to $400-500/day<br>
+                    <strong>Confidence:</strong> 85% - standard targeting optimization
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h3>Phase 3: Creative & Scale (Week 5-8)</h3>
+                <p><strong>Focus:</strong> Video creative optimization and budget scaling</p>
+                <h4>Creative Strategy:</h4>
+                <ul>
+                    <li><strong>Video Production:</strong> 6 new video ads per audience</li>
+                    <li><strong>A/B Testing:</strong> Systematic creative rotation</li>
+                    <li><strong>Budget Scaling:</strong> 25% weekly increases on winners</li>
+                    <li><strong>Funnel Optimization:</strong> Landing page conversion improvements</li>
+                </ul>
+                <div class="highlight">
+                    <strong>Expected Results:</strong><br>
+                    Week 5-8: Achieve target $25-50 CPA with video creative focus<br>
+                    <strong>Investment:</strong> Scale to $800-1000/day sustainable<br>
+                    <strong>Confidence:</strong> 80% - based on historical video performance
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Budget Allocation Strategy -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">9 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>BUDGET ALLOCATION STRATEGY</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Current vs Optimized Spending</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">$9,000</div>
+                            <div class="metric-label">Target Monthly Spend</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$14,520</div>
+                            <div class="metric-label">Actual Recent Spend</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">57</div>
+                            <div class="metric-label">Active Campaign Leads</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$254</div>
+                            <div class="metric-label">Current Active CPA</div>
+                        </div>
+                    </div>
+
+                    <h3>Phase-Based Budget Scaling</h3>
+                    
+                    <div class="phase-card">
+                        <h4>Phase 1: Foundation (Weeks 1-2)</h4>
+                        <ul>
+                            <li><strong>Daily Budget:</strong> $300 (maintain current)</li>
+                            <li><strong>Focus:</strong> Fix performance, not scale</li>
+                            <li><strong>Allocation:</strong> 100% to proven campaigns</li>
+                            <li><strong>Expected CPA:</strong> $60-80</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Phase 2: Optimization (Weeks 3-4)</h4>
+                        <ul>
+                            <li><strong>Daily Budget:</strong> $400-500</li>
+                            <li><strong>Focus:</strong> Audience separation testing</li>
+                            <li><strong>Allocation:</strong> 70% agencies, 30% CMOs</li>
+                            <li><strong>Expected CPA:</strong> $40-60</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Phase 3: Scale (Weeks 5-8)</h4>
+                        <ul>
+                            <li><strong>Daily Budget:</strong> $800-1000</li>
+                            <li><strong>Focus:</strong> Creative optimization & scaling</li>
+                            <li><strong>Allocation:</strong> Performance-based distribution</li>
+                            <li><strong>Expected CPA:</strong> $25-50</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>ROI Projections by Phase</h2>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Phase</th>
+                                <th>Monthly Spend</th>
+                                <th>Expected Leads</th>
+                                <th>Revenue Impact</th>
+                                <th>ROI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(204, 91, 39, 0.2);">
+                                <td><strong>Current</strong></td>
+                                <td>$14,520</td>
+                                <td>57</td>
+                                <td>$57K MRR growth</td>
+                                <td>293%</td>
+                            </tr>
+                            <tr>
+                                <td>Phase 1</td>
+                                <td>$9,000</td>
+                                <td>112</td>
+                                <td>$112K MRR growth</td>
+                                <td>1,144%</td>
+                            </tr>
+                            <tr>
+                                <td>Phase 2</td>
+                                <td>$13,500</td>
+                                <td>270</td>
+                                <td>$270K MRR growth</td>
+                                <td>1,900%</td>
+                            </tr>
+                            <tr style="background: rgba(204, 91, 39, 0.3);">
+                                <td><strong>Phase 3</strong></td>
+                                <td><strong>$27,000</strong></td>
+                                <td><strong>675</strong></td>
+                                <td><strong>$675K MRR growth</strong></td>
+                                <td><strong>2,400%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight">
+                        <h4>Key Assumptions:</h4>
+                        <ul>
+                            <li>Average customer value: $1,000 (blended agencies/CMOs)</li>
+                            <li>50% profit margins maintained</li>
+                            <li>Historical video ad performance achievable</li>
+                            <li>Proper audience segmentation implemented</li>
+                        </ul>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">Conservative Target</h3>
+                        <p><strong>$40 CPA at $30K monthly spend</strong><br>
+                        750 leads/month = $750K MRR growth opportunity</p>
+                    </div>
+
+                    <h3>Risk Management</h3>
+                    <ul>
+                        <li><strong>Weekly Performance Reviews:</strong> Adjust spend based on CPA performance</li>
+                        <li><strong>Campaign-Level Caps:</strong> Maximum $100 CPA before pause</li>
+                        <li><strong>Attribution Monitoring:</strong> Track revenue attribution accuracy</li>
+                        <li><strong>Conversion Quality:</strong> Monitor lead quality scores</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Technical Implementation -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">10 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>TECHNICAL IMPLEMENTATION PLAN</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Conversion Tracking Optimization</h2>
+                    
+                    <div class="highlight">
+                        <h3>Current Issues:</h3>
+                        <ul>
+                            <li><strong>Low Event Match Quality:</strong> Missing parameters in Zapier integration</li>
+                            <li><strong>Event Volume Too Low:</strong> Qualification filter reducing signal</li>
+                            <li><strong>Attribution Gaps:</strong> FBC parameter inconsistency</li>
+                            <li><strong>Learning Phase Issues:</strong> Insufficient conversion volume</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>📊 Enhanced Tracking Setup</h4>
+                        <ul>
+                            <li><strong>Dual Event Strategy:</strong> Booking events (agencies) + Onboarding (CMOs)</li>
+                            <li><strong>Parameter Completion:</strong> Ensure FBC, FBP, click_id capture</li>
+                            <li><strong>Event Volume Increase:</strong> Remove excessive qualification filters</li>
+                            <li><strong>Attribution Windows:</strong> 7-day click, 1-day view optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>🔧 Technical Requirements</h4>
+                        <ul>
+                            <li><strong>Zapier Webhook Update:</strong> Enhanced parameter passing</li>
+                            <li><strong>Apollo Integration:</strong> Streamline qualification logic</li>
+                            <li><strong>Pixel Health Check:</strong> Verify event firing consistency</li>
+                            <li><strong>iOS 14+ Optimization:</strong> Domain verification and API setup</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Campaign Architecture</h2>
+                    
+                    <h3>🏗️ Recommended Structure</h3>
+                    
+                    <div class="phase-card">
+                        <h4>Agency Campaigns (70% budget)</h4>
+                        <ul>
+                            <li><strong>Campaign 1:</strong> Small Agencies (10-50 employees)</li>
+                            <li><strong>Campaign 2:</strong> Mid-Size Agencies (50-100 employees)</li>
+                            <li><strong>Campaign 3:</strong> Large Agencies (100+ employees)</li>
+                            <li><strong>Objective:</strong> Lead Generation (booking events)</li>
+                            <li><strong>Bidding:</strong> Lowest cost with CPA cap</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>CMO Campaigns (30% budget)</h4>
+                        <ul>
+                            <li><strong>Campaign 1:</strong> SaaS/Tech CMOs</li>
+                            <li><strong>Campaign 2:</strong> E-commerce/Retail CMOs</li>
+                            <li><strong>Objective:</strong> Conversions (onboarding events)</li>
+                            <li><strong>Bidding:</strong> Lowest cost with value optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">5</div>
+                            <div class="metric-label">Total Campaigns</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">15</div>
+                            <div class="metric-label">Ad Sets</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">45</div>
+                            <div class="metric-label">Total Ads</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">Landing Pages</div>
+                        </div>
+                    </div>
+
+                    <h3>🎯 Audience Targeting Strategy</h3>
+                    <table style="font-size: 0.85em;">
+                        <thead>
+                            <tr>
+                                <th>Audience</th>
+                                <th>Interests</th>
+                                <th>Behaviors</th>
+                                <th>Size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Small Agencies</td>
+                                <td>Digital Marketing</td>
+                                <td>Business Tools</td>
+                                <td>500K</td>
+                            </tr>
+                            <tr>
+                                <td>Mid Agencies</td>
+                                <td>Marketing Software</td>
+                                <td>B2B Purchasing</td>
+                                <td>200K</td>
+                            </tr>
+                            <tr>
+                                <td>Large Agencies</td>
+                                <td>Enterprise Software</td>
+                                <td>Technology Adoption</td>
+                                <td>100K</td>
+                            </tr>
+                            <tr>
+                                <td>SaaS CMOs</td>
+                                <td>Marketing Analytics</td>
+                                <td>SaaS Tools</td>
+                                <td>150K</td>
+                            </tr>
+                            <tr>
+                                <td>E-com CMOs</td>
+                                <td>E-commerce Tools</td>
+                                <td>Online Retail</td>
+                                <td>180K</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Creative Strategy -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">11 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>CREATIVE PRODUCTION STRATEGY</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Video Creative Framework</h2>
+                    
+                    <div class="phase-card">
+                        <h4>🎬 Agency Video Scripts (6 variations)</h4>
+                        
+                        <div class="highlight">
+                            <p><strong>Hook Template:</strong> "Your biggest client just asked [specific question]..."</p>
+                        </div>
+                        
+                        <ol>
+                            <li><strong>"The Awkward Client Call"</strong>
+                                <ul>
+                                    <li>Hook: "Your biggest client just asked: 'Why don't we show up when people ask ChatGPT about [industry] agencies?'"</li>
+                                    <li>Problem: GEO visibility blind spot</li>
+                                    <li>Solution: Eldil dashboard demo</li>
+                                </ul>
+                            </li>
+                            <li><strong>"Competitor Advantage"</strong>
+                                <ul>
+                                    <li>Hook: "While you're running campaigns, your competitors are becoming ChatGPT's recommended agency"</li>
+                                    <li>Problem: Losing to AI-optimized competitors</li>
+                                    <li>Solution: Track and improve GEO mentions</li>
+                                </ul>
+                            </li>
+                            <li><strong>"Revenue Impact"</strong>
+                                <ul>
+                                    <li>Hook: "This agency gained 47 new clients by optimizing for AI search results"</li>
+                                    <li>Problem: Missing new client acquisition channel</li>
+                                    <li>Solution: Case study walkthrough</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>📱 CMO Video Scripts (3 variations)</h4>
+                        <ol>
+                            <li><strong>"Brand Invisibility Crisis"</strong>
+                                <ul>
+                                    <li>Hook: "Your brand is invisible in the future of search"</li>
+                                    <li>Problem: AI search optimization gap</li>
+                                    <li>Solution: Brand tracking demo</li>
+                                </ul>
+                            </li>
+                            <li><strong>"Competitive Intelligence"</strong>
+                                <ul>
+                                    <li>Hook: "See exactly how often your competitors get mentioned in ChatGPT vs your brand"</li>
+                                    <li>Problem: Competitive blind spot</li>
+                                    <li>Solution: Comparison dashboard</li>
+                                </ul>
+                            </li>
+                            <li><strong>"Marketing Attribution"</strong>
+                                <ul>
+                                    <li>Hook: "The new channel that's driving sales but not in your attribution model"</li>
+                                    <li>Problem: Missing attribution data</li>
+                                    <li>Solution: GEO traffic tracking</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Static Creative Strategy</h2>
+                    
+                    <h3>📊 Data-Driven Static Ads</h3>
+                    
+                    <div class="phase-card">
+                        <h4>Agency Static Creatives (6 variations)</h4>
+                        <ul>
+                            <li><strong>Dashboard Screenshots:</strong> Eldil interface with agency metrics</li>
+                            <li><strong>Before/After Charts:</strong> GEO visibility improvements</li>
+                            <li><strong>Client Testimonials:</strong> Social proof from successful agencies</li>
+                            <li><strong>Competitive Analysis:</strong> Side-by-side agency comparisons</li>
+                            <li><strong>ROI Calculator:</strong> Interactive cost/benefit breakdown</li>
+                            <li><strong>Feature Highlights:</strong> Key platform capabilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>CMO Static Creatives (6 variations)</h4>
+                        <ul>
+                            <li><strong>Brand Visibility Score:</strong> Branded scoring interface</li>
+                            <li><strong>Industry Benchmarks:</strong> Comparative performance data</li>
+                            <li><strong>Enterprise Logos:</strong> Trust signals from recognizable brands</li>
+                            <li><strong>Trend Analysis:</strong> GEO growth charts and projections</li>
+                            <li><strong>Alert Notifications:</strong> Real-time monitoring interface</li>
+                            <li><strong>Integration Graphics:</strong> Tech stack compatibility</li>
+                        </ul>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">9</div>
+                            <div class="metric-label">Video Creatives</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">12</div>
+                            <div class="metric-label">Static Creatives</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">21</div>
+                            <div class="metric-label">Total Creative Assets</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">Weekly</div>
+                            <div class="metric-label">Refresh Cycle</div>
+                        </div>
+                    </div>
+
+                    <h3>📝 Copy Framework</h3>
+                    
+                    <div class="highlight">
+                        <h4>Agency Copy Templates:</h4>
+                        <ul>
+                            <li><strong>Headline:</strong> Problem-focused questions</li>
+                            <li><strong>Body:</strong> Specific agency pain points</li>
+                            <li><strong>CTA:</strong> "Book Free GEO Audit"</li>
+                            <li><strong>Social Proof:</strong> "Trusted by 500+ agencies"</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight">
+                        <h4>CMO Copy Templates:</h4>
+                        <ul>
+                            <li><strong>Headline:</strong> Brand visibility focus</li>
+                            <li><strong>Body:</strong> Competitive intelligence angle</li>
+                            <li><strong>CTA:</strong> "Start Free Trial"</li>
+                            <li><strong>Social Proof:</strong> Enterprise client logos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Landing Page Optimization -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">12 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>LANDING PAGE OPTIMIZATION</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>Agency Landing Page Strategy</h2>
+                    
+                    <div class="phase-card">
+                        <h4>🎯 Agency Page Structure</h4>
+                        <ol>
+                            <li><strong>Hero Section</strong>
+                                <ul>
+                                    <li>Headline: "Win More Clients with GEO Analytics"</li>
+                                    <li>Subhead: "Track and improve your agency's visibility in AI search results"</li>
+                                    <li>CTA: "Book Your Free GEO Audit"</li>
+                                    <li>Hero Image: Dashboard screenshot</li>
+                                </ul>
+                            </li>
+                            <li><strong>Problem Section</strong>
+                                <ul>
+                                    <li>"Your competitors are winning clients you don't even know exist"</li>
+                                    <li>Statistics on AI search growth</li>
+                                    <li>Client question examples</li>
+                                </ul>
+                            </li>
+                            <li><strong>Solution Demo</strong>
+                                <ul>
+                                    <li>Interactive dashboard walkthrough</li>
+                                    <li>Before/after case studies</li>
+                                    <li>ROI calculator</li>
+                                </ul>
+                            </li>
+                            <li><strong>Social Proof</strong>
+                                <ul>
+                                    <li>Agency testimonials</li>
+                                    <li>"Trusted by 500+ agencies"</li>
+                                    <li>Case study previews</li>
+                                </ul>
+                            </li>
+                            <li><strong>CTA Section</strong>
+                                <ul>
+                                    <li>Calendly booking widget</li>
+                                    <li>"30-minute agency audit"</li>
+                                    <li>No commitment messaging</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="highlight">
+                        <h4>🔍 Key Optimization Elements:</h4>
+                        <ul>
+                            <li><strong>Urgency:</strong> "Limited spots available"</li>
+                            <li><strong>Specificity:</strong> Exact agency metrics and outcomes</li>
+                            <li><strong>Risk Reversal:</strong> "No commitment, just insights"</li>
+                            <li><strong>Authority:</strong> Founder credentials and expertise</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>CMO Landing Page Strategy</h2>
+                    
+                    <div class="phase-card">
+                        <h4>📈 CMO Page Structure</h4>
+                        <ol>
+                            <li><strong>Hero Section</strong>
+                                <ul>
+                                    <li>Headline: "Track Your Brand's AI Visibility"</li>
+                                    <li>Subhead: "See how often your brand appears in ChatGPT, Claude, and Perplexity results"</li>
+                                    <li>CTA: "Start Free 14-Day Trial"</li>
+                                    <li>Hero Image: Brand tracking interface</li>
+                                </ul>
+                            </li>
+                            <li><strong>Competitive Intelligence</strong>
+                                <ul>
+                                    <li>"Know exactly where you stand vs competitors"</li>
+                                    <li>Benchmark comparison tools</li>
+                                    <li>Industry analysis examples</li>
+                                </ul>
+                            </li>
+                            <li><strong>Feature Highlights</strong>
+                                <ul>
+                                    <li>Real-time monitoring</li>
+                                    <li>Automated reporting</li>
+                                    <li>Team collaboration tools</li>
+                                </ul>
+                            </li>
+                            <li><strong>Enterprise Trust</strong>
+                                <ul>
+                                    <li>Enterprise client logos</li>
+                                    <li>Security certifications</li>
+                                    <li>Integration capabilities</li>
+                                </ul>
+                            </li>
+                            <li><strong>Trial CTA</strong>
+                                <ul>
+                                    <li>Self-service trial signup</li>
+                                    <li>"No credit card required"</li>
+                                    <li>Feature access preview</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">Dedicated Landing Pages</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5</div>
+                            <div class="metric-label">Sections Per Page</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">A/B Test Variations</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">15%</div>
+                            <div class="metric-label">Target Conversion Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">Landing Page Priority</h3>
+                        <p>Agency landing page first - higher LTV and proven demand based on campaign performance</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>📊 A/B Testing Framework</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Variation A</th>
+                        <th>Variation B</th>
+                        <th>Test Duration</th>
+                        <th>Success Metric</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Headline</td>
+                        <td>Problem-focused</td>
+                        <td>Benefit-focused</td>
+                        <td>2 weeks</td>
+                        <td>Click-through rate</td>
+                    </tr>
+                    <tr>
+                        <td>CTA Button</td>
+                        <td>"Book Free Audit"</td>
+                        <td>"Get Agency Report"</td>
+                        <td>1 week</td>
+                        <td>Conversion rate</td>
+                    </tr>
+                    <tr>
+                        <td>Social Proof</td>
+                        <td>Client testimonials</td>
+                        <td>Usage statistics</td>
+                        <td>2 weeks</td>
+                        <td>Page engagement</td>
+                    </tr>
+                    <tr>
+                        <td>Hero Video</td>
+                        <td>Product demo</td>
+                        <td>Customer testimonial</td>
+                        <td>3 weeks</td>
+                        <td>Lead quality score</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 13: Performance Monitoring -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">13 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>PERFORMANCE MONITORING FRAMEWORK</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>📊 KPI Dashboard</h2>
+                    
+                    <div class="phase-card">
+                        <h4>Primary Metrics (Daily Monitoring)</h4>
+                        <ul>
+                            <li><strong>Cost Per Acquisition (CPA)</strong>
+                                <ul>
+                                    <li>Target: Agency $40-60, CMO $25-40</li>
+                                    <li>Alert: >$100 for any campaign</li>
+                                    <li>Review: Daily at 9 AM EST</li>
+                                </ul>
+                            </li>
+                            <li><strong>Lead Quality Score</strong>
+                                <ul>
+                                    <li>Target: >80% qualified leads</li>
+                                    <li>Measurement: Apollo enrichment score</li>
+                                    <li>Review: Weekly team assessment</li>
+                                </ul>
+                            </li>
+                            <li><strong>Conversion Volume</strong>
+                                <ul>
+                                    <li>Target: 50 events/week minimum</li>
+                                    <li>Alert: <30 events in 7 days</li>
+                                    <li>Action: Learning phase risk assessment</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Secondary Metrics (Weekly Review)</h4>
+                        <ul>
+                            <li><strong>Event Match Quality</strong>
+                                <ul>
+                                    <li>Target: >6.0 overall score</li>
+                                    <li>Monitor: FBC parameter consistency</li>
+                                    <li>Action: Technical optimization</li>
+                                </ul>
+                            </li>
+                            <li><strong>Attribution Accuracy</strong>
+                                <ul>
+                                    <li>Cross-reference: CRM data matching</li>
+                                    <li>Validation: Revenue attribution</li>
+                                    <li>Benchmark: 85% attribution accuracy</li>
+                                </ul>
+                            </li>
+                            <li><strong>Creative Performance</strong>
+                                <ul>
+                                    <li>Video completion rates</li>
+                                    <li>Click-through rates by creative</li>
+                                    <li>Creative fatigue indicators</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>🚨 Alert System</h2>
+                    
+                    <div class="highlight">
+                        <h4>Immediate Action Triggers</h4>
+                        <ul>
+                            <li><strong>CPA >$150:</strong> Pause ad set within 2 hours</li>
+                            <li><strong>Spend >$200 with 0 conversions:</strong> Immediate review</li>
+                            <li><strong>Quality Ranking "Below Average":</strong> Creative refresh</li>
+                            <li><strong>Event match quality <4.0:</strong> Technical audit</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>📈 Optimization Schedule</h4>
+                        <ul>
+                            <li><strong>Daily (9 AM EST)</strong>
+                                <ul>
+                                    <li>CPA performance check</li>
+                                    <li>Budget pacing review</li>
+                                    <li>Alert resolution</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monday (Weekly Review)</strong>
+                                <ul>
+                                    <li>Campaign performance analysis</li>
+                                    <li>Creative rotation decisions</li>
+                                    <li>Budget reallocation</li>
+                                </ul>
+                            </li>
+                            <li><strong>Friday (Strategic Planning)</strong>
+                                <ul>
+                                    <li>Next week optimization priorities</li>
+                                    <li>Creative production requests</li>
+                                    <li>Testing roadmap updates</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">12</div>
+                            <div class="metric-label">KPIs Tracked Daily</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Automated Alerts</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">Weekly Reviews</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Target Attribution Accuracy</div>
+                        </div>
+                    </div>
+
+                    <h3>📋 Reporting Framework</h3>
+                    <ul>
+                        <li><strong>Daily Slack Updates:</strong> CPA, spend, leads</li>
+                        <li><strong>Weekly Performance Email:</strong> Detailed analysis with recommendations</li>
+                        <li><strong>Monthly Business Review:</strong> ROI, scaling opportunities, strategic pivots</li>
+                        <li><strong>Quarterly Account Audit:</strong> Comprehensive performance assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Risk Management -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">14 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>RISK MANAGEMENT STRATEGY</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>⚠️ Identified Risk Factors</h2>
+                    
+                    <div class="phase-card">
+                        <h4>High-Risk Issues</h4>
+                        <div class="critical">
+                            <h5>1. Conversion Event Instability</h5>
+                            <ul>
+                                <li><strong>Risk:</strong> Low event volume causing learning phase issues</li>
+                                <li><strong>Impact:</strong> Unpredictable performance, high CPA</li>
+                                <li><strong>Probability:</strong> High (currently happening)</li>
+                                <li><strong>Mitigation:</strong> Revert to booking events, increase volume</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning">
+                            <h5>2. Budget Waste on Poor Performers</h5>
+                            <ul>
+                                <li><strong>Risk:</strong> Repeating $6,555 CPA campaign failure</li>
+                                <li><strong>Impact:</strong> Significant budget loss, reduced ROI</li>
+                                <li><strong>Probability:</strong> Medium (preventable with monitoring)</li>
+                                <li><strong>Mitigation:</strong> Strict CPA caps, daily monitoring</li>
+                            </ul>
+                        </div>
+
+                        <div class="warning">
+                            <h5>3. Creative Fatigue</h5>
+                            <ul>
+                                <li><strong>Risk:</strong> Performance decline as ads saturate audience</li>
+                                <li><strong>Impact:</strong> Rising CPA, declining CTR</li>
+                                <li><strong>Probability:</strong> High (confirmed in discovery call)</li>
+                                <li><strong>Mitigation:</strong> Weekly creative rotation, fresh content</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>🛡️ Mitigation Protocols</h2>
+                    
+                    <div class="phase-card">
+                        <h4>Budget Protection Measures</h4>
+                        <ul>
+                            <li><strong>Campaign-Level CPA Caps:</strong> Maximum $100 before automatic pause</li>
+                            <li><strong>Daily Spend Limits:</strong> Prevent overnight budget depletion</li>
+                            <li><strong>Performance Thresholds:</strong> 72-hour review cycle for underperformers</li>
+                            <li><strong>Emergency Pause Protocol:</strong> Immediate halt if spend exceeds 2x daily budget</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Quality Assurance Framework</h4>
+                        <ul>
+                            <li><strong>Lead Qualification Scoring:</strong> Real-time Apollo validation</li>
+                            <li><strong>Attribution Verification:</strong> Cross-reference with CRM data</li>
+                            <li><strong>Event Match Quality Monitoring:</strong> Weekly technical health checks</li>
+                            <li><strong>Conversion Path Analysis:</strong> Monthly funnel optimization review</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight">
+                        <h4>🚨 Emergency Procedures</h4>
+                        <ul>
+                            <li><strong>Immediate Pause Triggers:</strong> CPA >$200, 0 conversions in 48h</li>
+                            <li><strong>Technical Failure Response:</strong> Pixel debugging within 2 hours</li>
+                            <li><strong>Budget Overspend Protocol:</strong> Account review and adjustment</li>
+                            <li><strong>Performance Collapse Plan:</strong> Revert to last known working setup</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>📊 Risk Assessment Matrix</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Risk Factor</th>
+                        <th>Probability</th>
+                        <th>Impact</th>
+                        <th>Risk Score</th>
+                        <th>Mitigation Strategy</th>
+                        <th>Monitoring Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="critical">
+                        <td>Conversion Event Issues</td>
+                        <td>High</td>
+                        <td>High</td>
+                        <td>9/10</td>
+                        <td>Revert to booking events</td>
+                        <td>Daily</td>
+                    </tr>
+                    <tr class="warning">
+                        <td>Budget Waste</td>
+                        <td>Medium</td>
+                        <td>High</td>
+                        <td>6/10</td>
+                        <td>Automated CPA caps</td>
+                        <td>Real-time</td>
+                    </tr>
+                    <tr class="warning">
+                        <td>Creative Fatigue</td>
+                        <td>High</td>
+                        <td>Medium</td>
+                        <td>6/10</td>
+                        <td>Weekly creative rotation</td>
+                        <td>Weekly</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Audience Saturation</td>
+                        <td>Low</td>
+                        <td>Medium</td>
+                        <td>3/10</td>
+                        <td>Audience expansion</td>
+                        <td>Monthly</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Platform Algorithm Changes</td>
+                        <td>Medium</td>
+                        <td>Low</td>
+                        <td>3/10</td>
+                        <td>Diversified campaign types</td>
+                        <td>Quarterly</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="roi-highlight">
+                <h3 class="strategic-headline">Risk Management Success Criteria</h3>
+                <p>Maintain CPA within target ranges 90% of the time while preventing any single campaign from exceeding $1,000 in losses</p>
+            </div>
+        </div>
+
+        <!-- Slide 15: Implementation Timeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">15 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>IMPLEMENTATION TIMELINE</h1>
+            </div>
+
+            <h2>8-Week Rollout Schedule</h2>
+
+            <div class="phase-card">
+                <h3>Week 1-2: Foundation Recovery Phase</h3>
+                <div class="two-column">
+                    <div>
+                        <h4>Week 1 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 1:</strong> Audit current campaign performance</li>
+                            <li><strong>Day 2:</strong> Implement conversion event changes</li>
+                            <li><strong>Day 3:</strong> Reactivate "Facebook Take The Wheel" campaign</li>
+                            <li><strong>Day 4:</strong> Pause/archive poor performers</li>
+                            <li><strong>Day 5:</strong> Technical tracking optimization</li>
+                            <li><strong>Day 6-7:</strong> Monitor and adjust</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 2 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 8:</strong> Performance review and adjustments</li>
+                            <li><strong>Day 9:</strong> Creative fatigue assessment</li>
+                            <li><strong>Day 10:</strong> Budget reallocation optimization</li>
+                            <li><strong>Day 11-12:</strong> Landing page audit</li>
+                            <li><strong>Day 13-14:</strong> Baseline performance establishment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>Week 1-2 Success Metrics:</strong> Return to sub-$80 CPA on reactivated campaigns, establish stable 50+ weekly conversion volume
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h3>Week 3-4: Audience Separation Phase</h3>
+                <div class="two-column">
+                    <div>
+                        <h4>Week 3 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 15:</strong> Agency landing page development</li>
+                            <li><strong>Day 16:</strong> Create agency-specific campaigns</li>
+                            <li><strong>Day 17:</strong> Set up audience targeting</li>
+                            <li><strong>Day 18:</strong> Launch agency campaigns (50% budget)</li>
+                            <li><strong>Day 19:</strong> CMO landing page development</li>
+                            <li><strong>Day 20-21:</strong> Performance monitoring</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 4 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 22:</strong> Launch CMO campaigns (25% budget)</li>
+                            <li><strong>Day 23:</strong> A/B testing setup</li>
+                            <li><strong>Day 24:</strong> Audience refinement</li>
+                            <li><strong>Day 25:</strong> Budget optimization</li>
+                            <li><strong>Day 26-28:</strong> Performance analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>Week 3-4 Success Metrics:</strong> Achieve 30% improvement in lead quality scores, establish separate funnels with 15%+ conversion rates
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h3>Week 5-6: Creative Optimization Phase</h3>
+                <div class="two-column">
+                    <div>
+                        <h4>Week 5 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 29:</strong> Video creative production (agency)</li>
+                            <li><strong>Day 30:</strong> Static creative development</li>
+                            <li><strong>Day 31:</strong> Creative A/B testing launch</li>
+                            <li><strong>Day 32:</strong> Video creative production (CMO)</li>
+                            <li><strong>Day 33:</strong> Performance monitoring</li>
+                            <li><strong>Day 34-35:</strong> Creative performance analysis</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 6 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 36:</strong> Winning creative identification</li>
+                            <li><strong>Day 37:</strong> Budget shift to high performers</li>
+                            <li><strong>Day 38:</strong> Creative rotation implementation</li>
+                            <li><strong>Day 39:</strong> Landing page optimization tests</li>
+                            <li><strong>Day 40-42:</strong> Comprehensive performance review</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>Week 5-6 Success Metrics:</strong> Achieve target $40-60 CPA for agencies, $25-40 for CMOs, establish sustainable creative rotation system
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h3>Week 7-8: Scaling & Optimization Phase</h3>
+                <div class="two-column">
+                    <div>
+                        <h4>Week 7 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 43:</strong> Budget scaling test (25% increase)</li>
+                            <li><strong>Day 44:</strong> Audience expansion implementation</li>
+                            <li><strong>Day 45:</strong> Advanced targeting features</li>
+                            <li><strong>Day 46:</strong> Performance monitoring</li>
+                            <li><strong>Day 47:</strong> Optimization adjustments</li>
+                            <li><strong>Day 48-49:</strong> Scaling validation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Week 8 Actions:</h4>
+                        <ul>
+                            <li><strong>Day 50:</strong> Full scaling implementation</li>
+                            <li><strong>Day 51:</strong> Performance monitoring</li>
+                            <li><strong>Day 52:</strong> ROI validation</li>
+                            <li><strong>Day 53:</strong> Future roadmap development</li>
+                            <li><strong>Day 54-56:</strong> Final performance assessment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>Week 7-8 Success Metrics:</strong> Scale to $800-1000/day spend while maintaining target CPA ranges, establish sustainable growth framework
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">56</div>
+                    <div class="metric-label">Total Implementation Days</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">Major Implementation Phases</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">12</div>
+                    <div class="metric-label">Key Milestones</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">Daily</div>
+                    <div class="metric-label">Progress Monitoring</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: ROI Projections -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">16 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>ROI PROJECTIONS & BUSINESS IMPACT</h1>
+            </div>
+
+            <h2>📊 Revenue Impact Analysis</h2>
+
+            <div class="two-column">
+                <div>
+                    <h3>Current vs Projected Performance</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Current</th>
+                                <th>Month 1</th>
+                                <th>Month 2</th>
+                                <th>Month 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(204, 91, 39, 0.2);">
+                                <td><strong>Monthly Spend</strong></td>
+                                <td>$14,520</td>
+                                <td>$9,000</td>
+                                <td>$13,500</td>
+                                <td>$27,000</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly Leads</td>
+                                <td>57</td>
+                                <td>150</td>
+                                <td>300</td>
+                                <td>675</td>
+                            </tr>
+                            <tr>
+                                <td>Average CPA</td>
+                                <td>$254.74</td>
+                                <td>$60</td>
+                                <td>$45</td>
+                                <td>$40</td>
+                            </tr>
+                            <tr>
+                                <td>Est. Revenue</td>
+                                <td>$57K MRR</td>
+                                <td>$150K MRR</td>
+                                <td>$300K MRR</td>
+                                <td>$675K MRR</td>
+                            </tr>
+                            <tr class="success">
+                                <td><strong>ROI</strong></td>
+                                <td><strong>293%</strong></td>
+                                <td><strong>1,567%</strong></td>
+                                <td><strong>2,122%</strong></td>
+                                <td><strong>2,400%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight">
+                        <h4>Key Assumptions:</h4>
+                        <ul>
+                            <li><strong>Blended Customer Value:</strong> $1,000 average (agencies + CMOs)</li>
+                            <li><strong>Conversion Rates:</strong> 15% lead-to-customer (agencies), 10% (CMOs)</li>
+                            <li><strong>Profit Margins:</strong> 50% maintained across scaling</li>
+                            <li><strong>Churn Rate:</strong> <5% monthly (current proven rate)</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>🎯 Conservative Projections (90% Confidence)</h4>
+                        <ul>
+                            <li><strong>Month 1:</strong> Achieve $80 CPA, 112 leads</li>
+                            <li><strong>Month 2:</strong> Achieve $60 CPA, 225 leads</li>
+                            <li><strong>Month 3:</strong> Achieve $50 CPA, 540 leads</li>
+                            <li><strong>Scaling Factor:</strong> 50% of optimistic projections</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>💰 Business Impact Analysis</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">$675K</div>
+                            <div class="metric-label">Month 3 MRR Target</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2,400%</div>
+                            <div class="metric-label">Target ROI</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,084%</div>
+                            <div class="metric-label">MRR Growth</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">30 days</div>
+                            <div class="metric-label">Payback Period</div>
+                        </div>
+                    </div>
+
+                    <h3>📈 Growth Trajectory Impact</h3>
+                    <div class="phase-card">
+                        <h4>Current Growth Context:</h4>
+                        <ul>
+                            <li><strong>Baseline MRR:</strong> $15K (70% monthly growth)</li>
+                            <li><strong>Organic Growth:</strong> $25.5K projected Month 3</li>
+                            <li><strong>Paid Growth Addition:</strong> +$675K MRR</li>
+                            <li><strong>Combined MRR:</strong> $700K+ by Month 3</li>
+                        </ul>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">🚀 Strategic Business Value</h3>
+                        <p><strong>46x acceleration in MRR growth rate</strong><br>
+                        Transform from $15K to $700K+ MRR in 90 days through optimized paid acquisition</p>
+                    </div>
+
+                    <h3>🎯 Milestone Tracking</h3>
+                    <ul>
+                        <li><strong>Week 2:</strong> Return to $60-80 CPA (baseline recovery)</li>
+                        <li><strong>Week 4:</strong> Achieve 150+ monthly lead run rate</li>
+                        <li><strong>Week 6:</strong> Reach $45 CPA with video creative optimization</li>
+                        <li><strong>Week 8:</strong> Scale to $40 CPA at $27K monthly spend</li>
+                    </ul>
+
+                    <div class="highlight">
+                        <h4>Success Validation Criteria:</h4>
+                        <ul>
+                            <li>Maintain 50% profit margins during scaling</li>
+                            <li>Achieve <90 day payback period</li>
+                            <li>Sustain <5% monthly churn rate</li>
+                            <li>Generate 10+ qualified demos weekly (agencies)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Success Metrics & KPIs -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">17 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>SUCCESS METRICS & OPTIMIZATION KPIs</h1>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>📊 Primary Success Indicators</h2>
+                    
+                    <div class="phase-card">
+                        <h3>Campaign Performance KPIs</h3>
+                        <ul>
+                            <li><strong>Cost Per Acquisition (CPA)</strong>
+                                <ul>
+                                    <li>Agency Target: $40-60</li>
+                                    <li>CMO Target: $25-40</li>
+                                    <li>Alert Threshold: >$100</li>
+                                    <li>Emergency Pause: >$200</li>
+                                </ul>
+                            </li>
+                            <li><strong>Lead Volume</strong>
+                                <ul>
+                                    <li>Month 1: 150+ leads</li>
+                                    <li>Month 2: 300+ leads</li>
+                                    <li>Month 3: 675+ leads</li>
+                                    <li>Weekly Minimum: 50 conversions</li>
+                                </ul>
+                            </li>
+                            <li><strong>Lead Quality Score</strong>
+                                <ul>
+                                    <li>Target: 80%+ qualified</li>
+                                    <li>Measurement: Apollo enrichment + manual review</li>
+                                    <li>Agency Minimum: 85% qualified</li>
+                                    <li>CMO Minimum: 75% qualified</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h3>Technical Performance KPIs</h3>
+                        <ul>
+                            <li><strong>Event Match Quality</strong>
+                                <ul>
+                                    <li>Target: 6.0+ overall score</li>
+                                    <li>Parameter Completion: 90%+ FBC capture</li>
+                                    <li>Attribution Accuracy: 85%+ match rate</li>
+                                    <li>iOS 14+ Optimization: Domain verification active</li>
+                                </ul>
+                            </li>
+                            <li><strong>Conversion Volume</strong>
+                                <ul>
+                                    <li>Weekly Minimum: 50+ events</li>
+                                    <li>Learning Phase: Exit within 7 days</li>
+                                    <li>Campaign Stability: <2 restarts per month</li>
+                                    <li>Event Distribution: 70% agencies, 30% CMOs</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>📈 Creative Performance Metrics</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">25%</div>
+                            <div class="metric-label">Video Completion Rate Target</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8%+</div>
+                            <div class="metric-label">CTR Target (Video)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3%+</div>
+                            <div class="metric-label">CTR Target (Static)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">Weekly</div>
+                            <div class="metric-label">Creative Refresh Cycle</div>
+                        </div>
+                    </div>
+
+                    <div class="phase-card">
+                        <h3>Business Impact Measurements</h3>
+                        <ul>
+                            <li><strong>Revenue Attribution</strong>
+                                <ul>
+                                    <li>MRR Growth Tracking: Weekly cohort analysis</li>
+                                    <li>Customer LTV Validation: 90-day tracking</li>
+                                    <li>Payback Period: Target <60 days</li>
+                                    <li>Channel Attribution: 85%+ accuracy</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sales Funnel Performance</strong>
+                                <ul>
+                                    <li>Agency Demo Booking Rate: 15%+</li>
+                                    <li>Demo-to-Close Rate: 25%+</li>
+                                    <li>CMO Trial-to-Paid Rate: 10%+</li>
+                                    <li>Overall Lead-to-Customer: 12%+</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3>📊 Optimization Triggers</h3>
+                    
+                    <div class="highlight">
+                        <h4>Performance-Based Actions:</h4>
+                        <ul>
+                            <li><strong>CPA >Target by 50%:</strong> Creative refresh within 48h</li>
+                            <li><strong>CTR decline >25%:</strong> Audience expansion test</li>
+                            <li><strong>Conversion rate <2%:</strong> Landing page optimization</li>
+                            <li><strong>Lead quality <75%:</strong> Targeting refinement</li>
+                        </ul>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">Success Definition</h3>
+                        <p><strong>Achieve $40-60 agency CPA and $25-40 CMO CPA while scaling to $27K+ monthly spend with 2,400%+ ROI</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>📋 Weekly Performance Review Framework</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>KPI Category</th>
+                        <th>Metrics Reviewed</th>
+                        <th>Success Threshold</th>
+                        <th>Action If Below</th>
+                        <th>Review Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Campaign Performance</td>
+                        <td>CPA, Volume, Quality</td>
+                        <td>Target CPA ranges</td>
+                        <td>Immediate optimization</td>
+                        <td>Daily</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Health</td>
+                        <td>Event Match, Attribution</td>
+                        <td>6.0+ match quality</td>
+                        <td>Technical debugging</td>
+                        <td>Weekly</td>
+                    </tr>
+                    <tr>
+                        <td>Creative Performance</td>
+                        <td>CTR, Completion Rates</td>
+                        <td>8%+ video CTR</td>
+                        <td>Creative refresh</td>
+                        <td>Weekly</td>
+                    </tr>
+                    <tr>
+                        <td>Business Impact</td>
+                        <td>MRR Growth, LTV</td>
+                        <td>Target revenue growth</td>
+                        <td>Funnel optimization</td>
+                        <td>Monthly</td>
+                    </tr>
+                    <tr class="success">
+                        <td><strong>Overall ROI</strong></td>
+                        <td><strong>Revenue vs Spend</strong></td>
+                        <td><strong>2,000%+ ROI</strong></td>
+                        <td><strong>Strategic pivot</strong></td>
+                        <td><strong>Weekly</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 18: Executive Conclusion -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">18 / 18</div>
+            </div>
+            <div class="slide-title">
+                <h1>EXECUTIVE CONCLUSION & NEXT STEPS</h1>
+            </div>
+
+            <div class="roi-highlight" style="margin-bottom: 40px;">
+                <h2 class="strategic-headline">Final Recommendation</h2>
+                <h3 class="success-headline">IMMEDIATE OPTIMIZATION IMPLEMENTATION REQUIRED</h3>
+                <p>Confidence Level: <strong>HIGH (85% probability of success)</strong></p>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h2>📈 Strategic Summary</h2>
+                    
+                    <div class="highlight">
+                        <h3>Current State Assessment:</h3>
+                        <ul>
+                            <li><strong>Account has proven potential:</strong> Historical $59 CPA demonstrates achievable efficiency</li>
+                            <li><strong>Recent performance decline:</strong> Conversion event changes caused 330% CPA increase</li>
+                            <li><strong>Structural issues:</strong> Mixed audience targeting diluting effectiveness</li>
+                            <li><strong>Technical problems:</strong> Low event match quality impacting learning</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>🎯 Optimization Opportunity</h4>
+                        <ul>
+                            <li><strong>CPA Reduction Potential:</strong> 85% improvement to $40-60 range</li>
+                            <li><strong>Volume Scaling:</strong> 10x lead generation at target efficiency</li>
+                            <li><strong>Revenue Impact:</strong> $675K MRR growth in 90 days</li>
+                            <li><strong>ROI Achievement:</strong> 2,400% sustainable return</li>
+                        </ul>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">$59</div>
+                            <div class="metric-label">Proven Best CPA</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Improvement Potential</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$675K</div>
+                            <div class="metric-label">MRR Growth Target</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">90 Days</div>
+                            <div class="metric-label">Timeline to Target</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>🚀 Implementation Priority</h2>
+                    
+                    <div class="phase-card">
+                        <h4>Phase 1: Immediate Actions (Week 1-2)</h4>
+                        <ul>
+                            <li><strong>✅ Revert conversion events</strong> to booking-based for agencies</li>
+                            <li><strong>✅ Reactivate winning campaigns</strong> ("Facebook Take The Wheel")</li>
+                            <li><strong>✅ Pause budget waste</strong> (archive failing campaigns)</li>
+                            <li><strong>✅ Fix technical tracking</strong> (event match quality)</li>
+                        </ul>
+                        <div class="success">Expected Result: Return to $60-80 CPA within 2 weeks</div>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Phase 2: Strategic Separation (Week 3-4)</h4>
+                        <ul>
+                            <li><strong>🎯 Launch dedicated campaigns</strong> for agencies vs CMOs</li>
+                            <li><strong>🎯 Create separate landing pages</strong> and funnels</li>
+                            <li><strong>🎯 Implement audience targeting</strong> optimization</li>
+                            <li><strong>🎯 Scale budget allocation</strong> to winning segments</li>
+                        </ul>
+                        <div class="warning">Expected Result: 50% efficiency improvement</div>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4>Phase 3: Creative & Scale (Week 5-8)</h4>
+                        <ul>
+                            <li><strong>🎨 Deploy video creative strategy</strong> (proven $7 CPB)</li>
+                            <li><strong>🎨 Implement systematic A/B testing</strong></li>
+                            <li><strong>🎨 Scale budget to $27K monthly</strong></li>
+                            <li><strong>🎨 Achieve target performance</strong> metrics</li>
+                        </ul>
+                        <div class="success">Expected Result: $40-60 CPA at scale</div>
+                    </div>
+
+                    <div class="roi-highlight">
+                        <h3 class="success-headline">Business Impact</h3>
+                        <p><strong>Transform Eldil from $15K to $700K+ MRR</strong><br>
+                        46x acceleration in growth through optimized paid acquisition</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>📊 Success Validation Framework</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Timeline</th>
+                        <th>Key Milestone</th>
+                        <th>Success Metric</th>
+                        <th>Go/No-Go Decision</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Foundation Fix</td>
+                        <td>Week 1-2</td>
+                        <td>Revert to proven setup</td>
+                        <td>$60-80 CPA achieved</td>
+                        <td>✅ Proceed to Phase 2</td>
+                    </tr>
+                    <tr>
+                        <td>Audience Separation</td>
+                        <td>Week 3-4</td>
+                        <td>Launch dedicated campaigns</td>
+                        <td>50% efficiency improvement</td>
+                        <td>⚠️ Optimize or pivot</td>
+                    </tr>
+                    <tr>
+                        <td>Creative Optimization</td>
+                        <td>Week 5-6</td>
+                        <td>Deploy video strategy</td>
+                        <td>$40-60 CPA range</td>
+                        <td>🎯 Scale or adjust</td>
+                    </tr>
+                    <tr style="background: rgba(204, 91, 39, 0.3);">
+                        <td><strong>Scaling Validation</strong></td>
+                        <td><strong>Week 7-8</strong></td>
+                        <td><strong>Achieve $27K spend</strong></td>
+                        <td><strong>2,400%+ ROI</strong></td>
+                        <td><strong>🚀 Full commitment</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
+                <div class="highlight" style="margin: 40px auto; max-width: 800px;">
+                    <h3>📋 Immediate Next Steps</h3>
+                    <p><strong>1. Stakeholder Approval:</strong> Secure buy-in for 8-week optimization program</p>
+                    <p><strong>2. Technical Access:</strong> Provide full Meta Ads account access and admin permissions</p>
+                    <p><strong>3. Resource Allocation:</strong> Assign dedicated team member for daily communication</p>
+                    <p><strong>4. Budget Commitment:</strong> Approve scaling budget plan ($9K → $27K monthly)</p>
+                    <p><strong>5. Implementation Kickoff:</strong> Schedule Week 1 strategy session and begin execution</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; font-style: italic; color: #cc5b27; margin-bottom: 40px;">
+                <p><strong>This comprehensive audit provides the strategic foundation to transform Eldil AI's paid acquisition from underperforming to industry-leading, with clear pathways to 2,400%+ ROI and accelerated business growth.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">❮ Previous</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next ❯</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(n) {
+            if (currentSlide + n >= 0 && currentSlide + n < totalSlides) {
+                showSlide(currentSlide + n);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        showSlide(0);
+
+        // Auto-save scroll position for each slide
+        const slideScrollPositions = new Array(totalSlides).fill(0);
+
+        slides.forEach((slide, index) => {
+            slide.addEventListener('scroll', function() {
+                slideScrollPositions[index] = this.scrollTop;
+            });
+        });
+
+        // Restore scroll position when switching slides
+        function restoreScrollPosition() {
+            slides[currentSlide].scrollTop = slideScrollPositions[currentSlide];
+        }
+
+        // Enhanced slide change with scroll restoration
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Restore scroll position after a brief delay
+            setTimeout(restoreScrollPosition, 50);
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+    </script>
+</body>
+</html>
