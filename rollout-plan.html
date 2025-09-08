@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldil AI - Concise 2-Week Meta Ads Implementation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #162642 0%, #1a2b47 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 40px 60px 140px 60px;
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+            background: linear-gradient(135deg, #162642 0%, #1a2b47 100%);
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #cc5b27;
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .slide-number {
+            color: #cc5b27;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        h1 {
+            color: #cc5b27;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #cc5b27;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-left: 4px solid #cc5b27;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #cc5b27;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+
+        .critical-box {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #F44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .action-box {
+            background: rgba(204, 91, 39, 0.2);
+            border: 2px solid #cc5b27;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(204, 91, 39, 0.3);
+        }
+
+        th {
+            background: rgba(204, 91, 39, 0.8);
+            color: white;
+            font-weight: bold;
+        }
+
+        .day-row {
+            background: rgba(204, 91, 39, 0.1);
+        }
+
+        .critical {
+            color: #F44336;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        ul, ol {
+            margin: 12px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 6px 0;
+            line-height: 1.3;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 9999;
+            background: rgba(22, 38, 66, 0.9);
+            padding: 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(204, 91, 39, 0.3);
+        }
+
+        .nav-btn {
+            background: #cc5b27;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #b84e22;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            background: rgba(204, 91, 39, 0.3);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .urgency-banner {
+            background: linear-gradient(45deg, #cc5b27, #ff6b35);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+
+        .quote-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #cc5b27;
+            padding: 15px;
+            font-style: italic;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px 30px 140px 30px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        
+        <!-- Slide 1: Event Tracking Strategy -->
+        <div class="slide active">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">1 / 3</div>
+            </div>
+            
+            <h1>META ADS EVENT TRACKING STRATEGY</h1>
+            
+            <div class="quote-box">
+                <strong>Client:</strong> "The event match quality. It always comes down to this. This is what's really killing us."
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <div class="critical-box">
+                        <h3>CURRENT CRISIS</h3>
+                        <ul>
+                            <li><strong>Rogue Events:</strong> Lead events firing on every page visit</li>
+                            <li><strong>Low Volume:</strong> Purchase events failed due to insufficient scale</li>
+                            <li><strong>Mixed Signals:</strong> Agency + CMO audiences in same campaigns</li>
+                            <li><strong>Poor Attribution:</strong> Event match quality <6.0</li>
+                        </ul>
+                        
+                        <div class="quote-box">
+                            "We had a rogue lead event that sent too many leads. It basically sends a lead every time someone went on to the page."
+                        </div>
+                    </div>
+
+                    <div class="action-box">
+                        <h3>HISTORICAL SUCCESS</h3>
+                        <ul>
+                            <li><strong>Booking Events:</strong> $30 CPA (standard), $7 CPA (video)</li>
+                            <li><strong>CMO Trials:</strong> 66% trial-to-paid conversion</li>
+                            <li><strong>Agency Bookings:</strong> 1:12 booking-to-close ratio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="success-box">
+                        <h3>SOLUTION: DUAL EVENT STRATEGY</h3>
+                        
+                        <h4>Agency Campaigns (Booking Events)</h4>
+                        <ul>
+                            <li><strong>Event:</strong> "Lead" (strategy session booking)</li>
+                            <li><strong>Trigger:</strong> Calendly booking + Apollo verification</li>
+                            <li><strong>Target CPA:</strong> $30-60 per qualified booking</li>
+                            <li><strong>Objective:</strong> Lead Generation</li>
+                        </ul>
+
+                        <h4>CMO Campaigns (Purchase Events)</h4>
+                        <ul>
+                            <li><strong>Event:</strong> "Purchase" ($300 value)</li>
+                            <li><strong>Trigger:</strong> Trial signup with credit card</li>
+                            <li><strong>Target CPA:</strong> $50-80 per trial</li>
+                            <li><strong>Objective:</strong> Conversions</li>
+                        </ul>
+
+                        <div class="quote-box">
+                            "What I would really like, the north star is how much revenue do we get from these people."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-box">
+                <h3>TECHNICAL IMPLEMENTATION (DAY 1)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Agency Funnel</th>
+                            <th>CMO Funnel</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Stop Rogue Events</strong></td>
+                            <td>Remove page visit triggers</td>
+                            <td>Remove page visit triggers</td>
+                            <td class="critical">URGENT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Event Type</strong></td>
+                            <td>Lead (booking confirmation)</td>
+                            <td>Purchase ($300 trial value)</td>
+                            <td class="critical">URGENT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Qualification</strong></td>
+                            <td>Apollo + Calendly verification</td>
+                            <td>Credit card + onboarding complete</td>
+                            <td class="success">HIGH</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Parameters</strong></td>
+                            <td>FBC, FBP, company size</td>
+                            <td>FBC, FBP, trial value</td>
+                            <td class="success">HIGH</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 2: 2-Week Implementation Timeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">2 / 3</div>
+            </div>
+            
+            <h1>2-WEEK IMPLEMENTATION TIMELINE</h1>
+            
+            <div class="urgency-banner">
+                CLIENT: "Eight weeks is an eternity for a startup. I want to compress this to two weeks."
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <div class="critical-box">
+                        <h3>WEEK 1: EMERGENCY FIXES</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Action</th>
+                                    <th>Success Metric</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="day-row">
+                                    <td><strong>1</strong></td>
+                                    <td>Stop rogue events, implement FBC/FBP</td>
+                                    <td>Event quality >6.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2</strong></td>
+                                    <td>Agency landing page (20% conversion)</td>
+                                    <td>Page live + tracking</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3</strong></td>
+                                    <td>CMO landing page (66% trial rate)</td>
+                                    <td>Page live + tracking</td>
+                                </tr>
+                                <tr class="day-row">
+                                    <td><strong>4</strong></td>
+                                    <td>Video production (20 videos/hour)</td>
+                                    <td>25 video variations</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5</strong></td>
+                                    <td>Launch separated campaigns</td>
+                                    <td>Campaigns active</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6-7</strong></td>
+                                    <td>Monitor + optimize daily</td>
+                                    <td>$30-60 booking CPA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="success-box">
+                        <h3>WEEK 2: OPTIMIZE & SCALE</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Action</th>
+                                    <th>Success Metric</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="day-row">
+                                    <td><strong>8</strong></td>
+                                    <td>Apollo integration for quality</td>
+                                    <td>90%+ qualified leads</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>9</strong></td>
+                                    <td>Creative refresh (fatigue combat)</td>
+                                    <td>CTR improvement</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10-11</strong></td>
+                                    <td>Budget scaling on winners</td>
+                                    <td>Volume increase</td>
+                                </tr>
+                                <tr class="day-row">
+                                    <td><strong>12-13</strong></td>
+                                    <td>Purchase event testing (CMO)</td>
+                                    <td>CPA comparison</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>14</strong></td>
+                                    <td>Performance validation</td>
+                                    <td>Sustainable framework</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-box">
+                <h3>CAMPAIGN STRUCTURE</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campaign</th>
+                            <th>Objective</th>
+                            <th>Event</th>
+                            <th>Target CPA</th>
+                            <th>Budget %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Agency - Strategy Demo</strong></td>
+                            <td>Lead Generation</td>
+                            <td>Booking confirmation</td>
+                            <td>$30-60</td>
+                            <td>70%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CMO - Free Trial</strong></td>
+                            <td>Conversions</td>
+                            <td>Purchase ($300)</td>
+                            <td>$50-80</td>
+                            <td>30%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="action-box">
+                <h3>APOLLO LOOKALIKE STRATEGY</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data Source</th>
+                            <th>Segment Criteria</th>
+                            <th>Lookalike %</th>
+                            <th>Expected Volume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>High-Value Agencies</strong></td>
+                            <td>50+ employees, $5M+ revenue</td>
+                            <td>1-2%</td>
+                            <td>100K audience</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CMO Prospects</strong></td>
+                            <td>Director+ level, B2B companies</td>
+                            <td>1-3%</td>
+                            <td>150K audience</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Existing Customers</strong></td>
+                            <td>Current 25 paying clients</td>
+                            <td>3-5%</td>
+                            <td>200K audience</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 3: Success Metrics & Next Steps -->
+        <div class="slide">
+            <div class="slide-header">
+                <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+                <div class="slide-number">3 / 3</div>
+            </div>
+            
+            <h1>SUCCESS METRICS & IMMEDIATE ACTIONS</h1>
+
+            <div class="two-column">
+                <div>
+                    <div class="success-box">
+                        <h3>KEY PERFORMANCE TARGETS</h3>
+                        
+                        <h4>Technical Success</h4>
+                        <ul>
+                            <li><strong>Event Match Quality:</strong> >8.0 (from current <6.0)</li>
+                            <li><strong>Event Volume:</strong> 50+ weekly conversions</li>
+                            <li><strong>Attribution Accuracy:</strong> 90%+ tracking</li>
+                        </ul>
+
+                        <h4>Campaign Performance</h4>
+                        <ul>
+                            <li><strong>Agency CPA:</strong> $30-60 per booking</li>
+                            <li><strong>CMO CPA:</strong> $50-80 per trial</li>
+                            <li><strong>Agency Close Rate:</strong> >15% (vs current 8.3%)</li>
+                            <li><strong>CMO Conversion:</strong> Maintain 66%</li>
+                        </ul>
+
+                        <div class="quote-box">
+                            Historical Success: "Our agency landing page converted insanely well. It was like twenty percent conversion to booking."
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="action-box">
+                        <h3>IMMEDIATE REQUIREMENTS</h3>
+                        
+                        <h4>Day 1 Emergency Actions</h4>
+                        <ol>
+                            <li><strong>Stop rogue events</strong> in all campaigns</li>
+                            <li><strong>Audit Zapier webhooks</strong> completely</li>
+                            <li><strong>Implement Facebook Click ID and Browser ID tracking</strong> on landing pages</li>
+                            <li><strong>Separate campaign creation</strong> begins</li>
+                        </ol>
+
+                        <h4>Resource Requirements</h4>
+                        <ul>
+                            <li><strong>Meta Ads access:</strong> Admin permissions</li>
+                            <li><strong>Video tool access:</strong> 20 videos/hour capability</li>
+                            <li><strong>Daily check-ins:</strong> 30 min at 9 AM EST</li>
+                            <li><strong>Decision authority:</strong> Same-day approvals</li>
+                        </ul>
+                    </div>
+
+                    <div class="critical-box">
+                        <h3>CONSERVATIVE PROJECTIONS</h3>
+                        
+                        <h4>Week 2 Targets</h4>
+                        <ul>
+                            <li><strong>Agency Bookings:</strong> 50+ weekly</li>
+                            <li><strong>CMO Trials:</strong> 30+ weekly</li>
+                            <li><strong>Expected Closes:</strong> 8-10 agencies</li>
+                            <li><strong>Expected Revenue:</strong> $8-15K MRR</li>
+                        </ul>
+
+                        <div class="quote-box">
+                            Reality Check: "All MRR numbers were accidentally inflated. If our conversion event is a booking, we need to divide by 10 or 12."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgency-banner">
+                SUCCESS CRITERIA: Return to proven $30-60 booking CPA + separate qualified funnels + sustainable 50+ weekly conversions
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <div class="action-box" style="max-width: 800px; margin: 0 auto;">
+                    <h3>LAUNCH PROTOCOL</h3>
+                    <p><strong>✓ Event Crisis:</strong> Stop rogue events Day 1</p>
+                    <p><strong>✓ Proven Method:</strong> Return to booking events for agencies</p>
+                    <p><strong>✓ Purchase Testing:</strong> CMO trials with $300 value events</p>
+                    <p><strong>✓ Timeline:</strong> 2-week emergency implementation</p>
+                    <p><strong>✓ Monitoring:</strong> Daily optimization with immediate course correction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">❮ Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next ❯</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update navigation button states
+            const prevBtn = document.querySelector('.navigation .nav-btn:first-child');
+            const nextBtn = document.querySelector('.navigation .nav-btn:last-child');
+            
+            prevBtn.disabled = (currentSlide === 0);
+            nextBtn.disabled = (currentSlide === totalSlides - 1);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Initialize navigation buttons state
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
