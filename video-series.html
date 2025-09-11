@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldil AI - Creative Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 360px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.1rem;
+            border: 2px dashed #ddd;
+        }
+        
+        .brief-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .brief-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .brief-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .detail-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .detail-value {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .brief-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Eldil AI</div>
+        <div class="tagline">Creative Preview - Hand-Drawn Sketch Video Series</div>
+        
+        <div class="video-wrapper">
+            <!-- INSERT YOUR VIDEO EMBED CODE HERE -->
+        <div class="video-wrapper">
+            <!-- Facebook Video Embed -->
+            <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2F61575262195406%2Fvideos%2F1053388706946658%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden;width:100%;max-width:400px;height:auto;aspect-ratio:9/16;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+        </div>
+        
+        <div class="brief-info">
+            <h3>📋 Creative Brief Summary</h3>
+            <div class="brief-details">
+                <div class="detail-item">
+                    <div class="detail-label">Brief ID</div>
+                    <div class="detail-value">Charles001</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Due Date</div>
+                    <div class="detail-value">16th September 2025</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Total Creatives</div>
+                    <div class="detail-value">10 (5 Videos + 5 Images)</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Video Style</div>
+                    <div class="detail-value">Hand-drawn sketches + American VO</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Target Audience</div>
+                    <div class="detail-value">Marketing Agencies & CMOs</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Key Message</div>
+                    <div class="detail-value">AI Visibility & Authority</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <a href="https://www.eldil.ai/" class="cta-button">Visit Eldil AI</a>
+            <a href="https://drive.google.com/drive/folders/1EVeuQzfxpTM__VrIuaV1pfdGeI8hGK8U" class="cta-button">Brand Assets</a>
+        </div>
+        
+        <div class="footer">
+            <strong>Core Value Proposition:</strong> "We don't just get you seen in AI responses - we make you the authority"<br>
+            <strong>Problem:</strong> Brands are invisible in ChatGPT while competitors gain AI authority<br>
+            <strong>Solution:</strong> Track, optimize, and dominate AI search results
+        </div>
+    </div>
+</body>
+</html>
