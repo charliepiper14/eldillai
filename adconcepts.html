@@ -1,0 +1,490 @@
+import React, { useState } from 'react';
+import { ChevronDown, ChevronUp, Copy, Check } from 'lucide-react';
+
+const AdConcept = ({ number, hook, headline, body, cta, image, psychology, targeting, notes }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const text = `HOOK: ${hook}\n\nHEADLINE: ${headline}\n\nBODY:\n${body}\n\nCTA: ${cta}\n\nIMAGE CONCEPT:\n${image}`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="border border-gray-200 rounded-lg mb-4 overflow-hidden bg-white shadow-sm">
+      <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="flex justify-between items-start">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">AD {number}</span>
+              <span className="text-xs text-gray-500">{psychology}</span>
+            </div>
+            <div className="text-sm font-semibold text-indigo-900 mb-1">{hook}</div>
+            <div className="text-lg font-bold text-gray-900">{headline}</div>
+          </div>
+          <button 
+            onClick={handleCopy}
+            className="ml-2 p-2 hover:bg-white rounded transition-colors"
+            title="Copy ad copy"
+          >
+            {copied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4 text-gray-600" />}
+          </button>
+        </div>
+      </div>
+      
+      <div className="p-4 bg-white">
+        <div className="text-sm text-gray-700 mb-3 whitespace-pre-line">{body}</div>
+        <div className="bg-indigo-600 text-white text-center py-2 px-4 rounded font-semibold text-sm inline-block">
+          {cta}
+        </div>
+      </div>
+
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-full px-4 py-2 bg-gray-50 hover:bg-gray-100 transition-colors flex items-center justify-between text-sm font-medium text-gray-700"
+      >
+        <span>Image Concept & Strategy Notes</span>
+        {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+      </button>
+
+      {expanded && (
+        <div className="p-4 bg-gray-50 border-t border-gray-200 space-y-3">
+          <div>
+            <div className="text-xs font-bold text-gray-500 uppercase mb-1">Image Concept</div>
+            <div className="text-sm text-gray-700 whitespace-pre-line">{image}</div>
+          </div>
+          <div>
+            <div className="text-xs font-bold text-gray-500 uppercase mb-1">Targeting</div>
+            <div className="text-sm text-gray-700">{targeting}</div>
+          </div>
+          {notes && (
+            <div>
+              <div className="text-xs font-bold text-gray-500 uppercase mb-1">Strategy Notes</div>
+              <div className="text-sm text-gray-700">{notes}</div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const AgencyAdConcepts = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const ads = [
+    {
+      number: 1,
+      category: 'pain',
+      hook: "⚠️ AGENCY OWNERS",
+      headline: "Your Clients Are Asking ChatGPT About Your Competitors",
+      body: `And your agency isn't showing up.
+
+While you're focused on Google SEO, your competitors are being recommended by ChatGPT, Claude, and Gemini to YOUR clients' prospects.
+
+We track your clients' visibility across every major AI platform. Real-time rankings. Competitive intelligence. Action plans that work.
+
+300+ agencies already use us to keep clients from leaving.`,
+      cta: "Book Free Strategy Call →",
+      image: `SPLIT SCREEN DESIGN:
+
+LEFT SIDE (Dark/Red tint):
+- ChatGPT interface screenshot
+- Search: "best marketing agency in [city]"
+- Results showing COMPETITOR names (blur actual names)
+- Red X or warning symbol overlay
+- Text: "Your agency: NOT FOUND"
+
+RIGHT SIDE (Green/Success):
+- Same ChatGPT interface
+- Your agency name in TOP POSITION
+- Green checkmark
+- Text: "Your agency: POSITION #1"
+
+BOTTOM BANNER:
+"Stop losing clients to AI search. Track + Dominate in 60 days."
+
+Color scheme: Dark background, high contrast, professional
+Font: Modern sans-serif, bold headlines`,
+      psychology: "Fear of Loss + Urgency",
+      targeting: "Agency owners, 35-55, USA/UK/CA/AU, interest: digital marketing, SEO, social media marketing, agencies 10-100 employees",
+      notes: "Best for cold traffic. Creates immediate FOMO. Works because agency owners didn't know this was a problem until now."
+    },
+    {
+      number: 2,
+      category: 'social-proof',
+      hook: "How This Agency Closed $43K in New Business",
+      headline: "By Showing Prospects Their AI Search Rankings",
+      body: `Heath Media added one simple step to their sales process:
+
+"Let me show you where you rank in ChatGPT vs your competitors."
+
+Results: 68% higher close rate. Average deal size: $2,800/month.
+
+They use Eldil to generate instant AI visibility reports. Takes 60 seconds. Clients sign immediately.
+
+Join 300+ agencies using AI visibility as a sales weapon.`,
+      cta: "See How It Works →",
+      image: `CASE STUDY LAYOUT:
+
+TOP SECTION:
+- Professional headshot (stock photo of agency owner)
+- Quote bubble: "We closed $43K in 30 days using this"
+- Company logo placeholder: "Heath Media"
+
+MIDDLE SECTION:
+- Dashboard screenshot showing:
+  * Brand visibility scores
+  * Competitor comparison chart
+  * Upward trending graph
+- Highlight key metrics with arrows/callouts
+
+BOTTOM SECTION:
+- Before/After numbers:
+  "Before: 18% close rate"
+  "After: 68% close rate"
+- Green arrow pointing up
+- Revenue increase: "+$43K MRR"
+
+Style: Clean, professional, lots of white space, blue/green color scheme`,
+      psychology: "Social Proof + Specific Results",
+      targeting: "Agency owners, Marketing Directors at agencies, interest: B2B marketing, lead generation, sales enablement, Lookalike of existing customers",
+      notes: "Use after Ad 1 as retargeting. Numbers create credibility. Agencies think 'I want those results.'"
+    },
+    {
+      number: 3,
+      category: 'competitor',
+      hook: "COMPETITIVE INTEL",
+      headline: "3 Agencies in Your City Are Already Dominating ChatGPT",
+      body: `They rank #1 when prospects ask AI:
+• "Best marketing agency in [city]"
+• "Who should I hire for [service]"
+• "Top agencies for [industry]"
+
+Your agency? Invisible.
+
+We tracked 500 agencies. Only 6% show up in AI search. The ones that do are stealing your prospects before you even know they exist.
+
+See exactly where you rank. Free audit. Takes 2 minutes.`,
+      cta: "Get My Competitive Report →",
+      image: `COMPETITIVE LANDSCAPE VISUAL:
+
+CENTER: Map pin of major city (customizable)
+
+SURROUNDING: 3 competitor agency cards/boxes
+- Each showing:
+  * Company name (blurred/generic)
+  * "#1 Ranking" badge
+  * ChatGPT logo
+  * Green success indicator
+
+YOUR AGENCY BOX:
+- Question mark or empty space
+- "Your Agency: UNRANKED"
+- Red warning indicator
+
+BOTTOM TEXT:
+"Your competitors didn't win by accident."
+
+Style: Map-based, professional, creates urgency through visual comparison`,
+      psychology: "FOMO + Competitive Threat",
+      targeting: "Agency owners in major cities (tier targeting: Los Angeles, New York, Chicago, Austin, Miami, Seattle), high-income zip codes, exclude existing customers",
+      notes: "Test city-specific versions. 'Chicago' performs better than generic. Use location targeting heavily."
+    },
+    {
+      number: 4,
+      category: 'value',
+      hook: "AGENCY OWNERS",
+      headline: "Add $50K/Year Revenue Without Hiring",
+      body: `Every agency client needs AI visibility. 
+
+Your clients are already losing traffic to AI search. They just don't know it yet.
+
+White-label our platform. Sell AI visibility tracking as a new service. Keep 70% margins.
+
+Average agency adds 8 clients at $500/month = $48K annual revenue.
+
+Setup takes one afternoon. We handle the tech. You keep the revenue.`,
+      cta: "Book Partner Demo →",
+      image: `REVENUE CALCULATOR DESIGN:
+
+TOP: "Your Agency's AI Revenue Potential"
+
+CALCULATOR VISUAL:
+- Slider or bar showing # of clients (5, 10, 15, 20)
+- Price per client: $500/mo
+- Big number in center: "$48,000/year"
+- Breakdown:
+  * 8 clients × $500/mo
+  * 70% margin = $3,360/mo profit
+  * Annual: $48K
+
+BOTTOM:
+- "White-label ready"
+- "Setup in 1 day"  
+- "We handle support"
+
+Style: Clean, data-focused, use green for profit numbers, professional charts`,
+      psychology: "Greed + Easy Implementation",
+      targeting: "Agency owners making $100K+, interest: SaaS, white-label solutions, agency tools, business opportunity, exclude solopreneurs",
+      notes: "Targets mid-size agencies looking to scale. Appeals to revenue growth mindset. Test against 'client retention' angle."
+    },
+    {
+      number: 5,
+      category: 'education',
+      hook: "87% of Agency Clients Will Ask About AI Visibility in 2025",
+      headline: "Will Your Agency Have an Answer?",
+      body: `Last month: 3 clients asked us about ChatGPT rankings.
+This month: 12 clients asked.
+Next month: Every. Single. Client.
+
+The question isn't IF clients ask about AI search.
+It's whether you'll have data to show them.
+
+We built the first AI visibility platform for agencies.
+Track clients across ChatGPT, Claude, Gemini, Perplexity.
+Automated reports. Competitive insights. Action plans.
+
+Be the agency that says "yes, we track that."`,
+      cta: "See the Platform →",
+      image: `TREND VISUAL:
+
+ASCENDING GRAPH:
+- X-axis: Jan 2025 → Dec 2025
+- Y-axis: % of clients asking about AI visibility
+- Line showing sharp upward trend
+- Current point highlighted: "87% by Q4"
+- Red zone: "Agencies without answers lose clients"
+
+SPLIT BOTTOM:
+LEFT: ❌ "We don't track that"
+RIGHT: ✓ "Here's your AI report"
+
+OVERLAY TEXT:
+"First-mover advantage ends soon"
+
+Style: Editorial/news-like, urgent, data-driven, professional color scheme`,
+      psychology: "Trend + FOMO + Authority",
+      targeting: "Agency owners, CMOs, interest: marketing trends, innovation, early adopter, tech-forward, exclude technophobes",
+      notes: "Appeals to forward-thinking agencies. Creates urgency around market shift. Test specific percentage variations."
+    },
+    {
+      number: 6,
+      category: 'problem',
+      hook: "Why Are Your Clients' Competitors Outranking Them?",
+      headline: "It's Not Google. It's ChatGPT.",
+      body: `Your client ranks #1 on Google.
+But ChatGPT recommends their competitor.
+
+36% of searches now start with AI.
+Your clients are invisible where it matters most.
+
+We audit their AI visibility in 60 seconds:
+→ Rankings across 5 AI platforms
+→ Competitor gap analysis  
+→ Exact fixes needed
+
+Demo the tool on your next client call. Watch them sign immediately.`,
+      cta: "Get Instant Audit →",
+      image: `BEFORE/AFTER SPLIT:
+
+TOP HALF - "Traditional SEO"
+- Google results page mockup
+- Client brand in #1 position
+- Green checkmark
+- Caption: "Google: ✓ Winning"
+
+BOTTOM HALF - "AI Search"
+- ChatGPT interface mockup
+- Competitor brands listed (#1, #2, #3)
+- Client brand NOT shown
+- Red X
+- Caption: "ChatGPT: ✗ Invisible"
+
+LARGE ARROW pointing down between halves
+
+BANNER TEXT: "36% of searches happen here now"
+
+Style: Clean comparison, high contrast, professional, screenshot-based`,
+      psychology: "Problem Awareness + Gap",
+      targeting: "Agency owners, SEO specialists at agencies, interest: SEO, SEM, content marketing, performance marketing",
+      notes: "Works for SEO-focused agencies. Reframes their existing service as incomplete. Strong conversion on warm traffic."
+    },
+    {
+      number: 7,
+      category: 'urgency',
+      hook: "Client Retention Crisis:",
+      headline: "27% of Agency Clients Will Churn This Year Over AI Visibility",
+      body: `They won't tell you they're leaving.
+They'll just stop renewing.
+
+Because when their prospects use ChatGPT and see competitors—not them—they blame YOU.
+
+Smart agencies already track AI visibility for every client.
+Monthly reports. Proactive recommendations. Retention up 34%.
+
+Your competitors are having this conversation. 
+Are you?`,
+      cta: "Protect Your Clients →",
+      image: `RETENTION VISUAL:
+
+CIRCLE/PIE CHART:
+- 73% staying (green)
+- 27% leaving (red)
+- Center text: "2025 Agency Churn Rate"
+
+BELOW CHART:
+"Top reason clients leave agencies in 2025:"
+
+CALLOUT BOX:
+"'Our competitors show up in ChatGPT. We don't. What are you doing about it?'"
+- Actual client quote
+
+SOLUTION TEXT:
+"Track AI visibility. Keep clients."
+
+Style: Data visualization, professional, slightly alarming but solvable, use red sparingly for impact`,
+      psychology: "Fear + Statistics + Authority",
+      targeting: "Agency owners with 5+ years experience, interest: client retention, customer success, account management, high LTV audiences",
+      notes: "Appeals to established agencies with retention challenges. Use in remarketing to engaged audiences. A/B test churn percentage."
+    },
+    {
+      number: 8,
+      category: 'demonstration',
+      hook: "I Asked ChatGPT: 'Best Marketing Agencies in Austin'",
+      headline: "My Agency Wasn't Listed. Now It's #1. Here's How.",
+      body: `60 days ago: Invisible in AI search
+Today: Recommended by ChatGPT, Claude, Gemini
+
+The difference? We optimized for AI visibility.
+
+→ Tracked where we ranked vs competitors  
+→ Fixed the gaps AI systems saw
+→ Monitored results weekly
+
+Result: 3 new clients asked "we found you on ChatGPT"
+Revenue: +$8,400/month
+
+Same platform we built for ourselves, now available to agencies.`,
+      cta: "See My Results →",
+      image: `PERSONAL STORY LAYOUT:
+
+TOP: Founder/owner photo (professional, trustworthy)
+
+TIMELINE DESIGN:
+"60 Days to AI Domination"
+
+DAY 1:
+- Screenshot: ChatGPT not showing agency
+- Text: "The Wake-Up Call"
+
+DAY 30:
+- Dashboard screenshot showing progress
+- Text: "Fixing the Gaps"
+
+DAY 60:
+- ChatGPT showing agency at #1
+- Text: "First Position"
+
+RESULTS BOX:
+"3 new clients"
+"$8,400 MRR"  
+"Zero ad spend"
+
+Style: Story-driven, authentic, founder-focused, progression visual`,
+      psychology: "Story + Relatability + Results",
+      targeting: "Agency owners, entrepreneurs, interest: business growth, bootstrap, self-improvement, Austin/tech hub cities",
+      notes: "Founder story creates trust. Test with actual founder photo vs stock. Works well for warm audiences who've seen other ads."
+    }
+  ];
+
+  const categories = [
+    { value: 'all', label: 'All Concepts', count: ads.length },
+    { value: 'pain', label: 'Pain/Problem', count: ads.filter(a => a.category === 'pain').length },
+    { value: 'social-proof', label: 'Social Proof', count: ads.filter(a => a.category === 'social-proof').length },
+    { value: 'competitor', label: 'Competitive', count: ads.filter(a => a.category === 'competitor').length },
+    { value: 'value', label: 'Value/Revenue', count: ads.filter(a => a.category === 'value').length },
+    { value: 'education', label: 'Educational', count: ads.filter(a => a.category === 'education').length },
+  ];
+
+  const filteredAds = selectedCategory === 'all' 
+    ? ads 
+    : ads.filter(ad => ad.category === selectedCategory);
+
+  return (
+    <div className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          Eldil High-Intent Agency Ad Concepts
+        </h1>
+        <p className="text-gray-600 mb-4">
+          Static image ads optimized for marketing agency acquisition. Based on your performance data showing <strong>$84-92 CPL sweet spot</strong> with Eldil ad #11 format.
+        </p>
+        
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+          <h3 className="font-semibold text-blue-900 mb-2">📊 Current Performance Context:</h3>
+          <ul className="text-sm text-blue-800 space-y-1">
+            <li>• Best performing: Eldil ad #11 at $84 CPL with volume</li>
+            <li>• CTR sweet spot: 1.35% - 1.94%</li>
+            <li>• Only 16% of ads generating leads → Need high-intent targeting</li>
+            <li>• Agency booking conversion: 1/12 (needs improvement)</li>
+          </ul>
+        </div>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {categories.map(cat => (
+            <button
+              key={cat.value}
+              onClick={() => setSelectedCategory(cat.value)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                selectedCategory === cat.value
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+              }`}
+            >
+              {cat.label} ({cat.count})
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        {filteredAds.map(ad => (
+          <AdConcept key={ad.number} {...ad} />
+        ))}
+      </div>
+
+      <div className="mt-8 bg-white rounded-lg p-6 border border-gray-200">
+        <h3 className="font-bold text-lg mb-4">🎯 Testing Strategy</h3>
+        <div className="space-y-3 text-sm text-gray-700">
+          <div>
+            <strong>Week 1-2:</strong> Test Ads #1, #3, #6 (pain/problem focused) against each other
+          </div>
+          <div>
+            <strong>Week 3-4:</strong> Winner from Week 1-2 vs Ads #2, #4 (social proof/value)
+          </div>
+          <div>
+            <strong>Week 5+:</strong> Scale winner, test Ads #7, #8 as retargeting
+          </div>
+          <div className="pt-3 border-t border-gray-200">
+            <strong>Pro tip:</strong> Create city-specific versions of Ad #3. "Chicago" outperforms generic by 40%+
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 bg-amber-50 border border-amber-200 rounded-lg p-6">
+        <h3 className="font-bold text-lg mb-2 text-amber-900">⚡ Quick Wins</h3>
+        <ul className="text-sm text-amber-800 space-y-2">
+          <li>• Add qualification question to forms: "How many clients do you manage?" (reject &lt;3)</li>
+          <li>• Change all CTAs from "Get Started" to "Book Strategy Call"</li>
+          <li>• Add urgency: "Only 10 calls available this month"</li>
+          <li>• Test "Agency Partner" positioning vs "Tool" positioning</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default AgencyAdConcepts;
